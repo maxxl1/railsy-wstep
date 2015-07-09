@@ -1,0 +1,25 @@
+<div class="header">
+  <div class="container">
+    <p>Jakiśtam blog</p>
+  </div>
+</div>
+
+<div class="create">
+  <div class="container">
+    
+  <%= form_for(@message) do |f| %>  
+  <div class="field"> 
+    <%= f.label :Post %><br> 
+    <%= f.text_area :content %> 
+  </div> 
+  <div class="actions"> 
+    <%= f.submit "Wyślij" %> 
+  </div> 
+<% end %>
+
+
+
+    
+  </div>
+</div>
+
