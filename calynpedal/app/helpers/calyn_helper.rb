@@ -1,0 +1,2 @@
+module CalynHelper
+end

@@ -1,0 +1,20 @@
+<embed src="gay.mp3" autostart="true" loop="true" hidden="true"</embed>
+<div id = "calina">
+<p>STWÓRZ SWOJEGO WŁASNEGO CALINE!</p>
+<%= form_tag(method: "get") do %>
+  <%= label_tag(:q, "Calyn") %>
+  <%= text_field_tag(:q, '', :placeholder => "np. gej, pedał, cwel, kurdupel", :size => 22) %>
+  <%= submit_tag("GENERUJ!!!!") %>
+<% end %>
+</div>
+
+<div id = "copyright">
+<p>Copyright by maxxl</p>
+</div>
+<div id = "nowe">
+<p>Najnowsze calyny: </p><br>
+<% @calyny.reverse_order.take(5).each do |calyn| %>
+      <p class = "content">Calyn <%= calyn.content %></p>
+      <p class = "time"><%=calyn.created_at.in_time_zone('Warsaw').strftime("%Y/%m/%d %H:%M") %>
+    <%end%>
+</div>
