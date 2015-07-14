@@ -5,20 +5,37 @@
 	</a>
   </div>
 </div>
-
+<div class="container_panel">
+<div class = "panel">
+<% if logged_in? %>
+<p> Zalogowany jako: <%= User.find(session[:user_id]).nick %>
+ |
+ <%= link_to "Pokaż profil", User.find(session[:user_id]), class: 'link' %> |
+ <%= link_to "Logout", logout_path, method: "delete", class: 'link' %></p>
+<% else %>
+ <%= link_to "Zaloguj się", '/sessions/new', class: 'link' %>
+<% end %>
+</div>
+</div>
 <div class="messages">
   <div class="container">
   
-    <% @messages.each do |message| %>
+    <% @messages.reverse_order.each do |message| %>
       <div class = "message">
       <p class = "content"><%= message.content %></p>
-      <p class = "time"><%=message.created_at %></p>
+      <p class = "time"><%=message.created_at %> by <%= User.find(message.user_id).nick %></p>
+      <% if message.user_id == session[:user_id] %>
       <%= link_to 'Usuń post', message, method: :delete, data: { confirm: "Na pewno?"} %>
+      <% end %>
       <%= link_to 'Wyświetl całośc', message %>
+      <% if message.user_id == session[:user_id] %>     
       <%= link_to 'Edytuj', edit_message_path(message)%>
-    </div>
+      <% end %>    
+</div>
     <%end%>
+    <% if logged_in? %>    
     <%=link_to 'Nowy post', "messages/new" %>
-  </div>
+    <% end %>
+</div>
 </div>
 

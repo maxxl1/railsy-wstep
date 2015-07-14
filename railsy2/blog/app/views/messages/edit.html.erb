@@ -5,7 +5,19 @@
 	</a>
   </div>
 </div>
-
+<div class="container_panel">
+<div class = "panel">
+<% if logged_in? %>
+<p> Zalogowany jako: <%= User.find(session[:user_id]).nick %>
+ |
+ <%= link_to "Pokaż profil", User.find(session[:user_id]), class: 'link' %> |
+ <%= link_to "Logout", logout_path, method: "delete", class: 'link' %></p>
+<% else %>
+ <%= link_to "Zaloguj się", '/sessions/new', class: 'link' %>
+<% end %>
+</div>
+</div>
+<% if logged_in? %>
 <div class="create">
   <div class="container">
     
@@ -17,4 +29,7 @@
   <div class="actions"> 
     <%= f.submit "Aktualizuj" %> 
   </div> 
+<% end %>
+<% else %> 
+Tylko zalogowani użytkownicy mogą edytować posty
 <% end %>

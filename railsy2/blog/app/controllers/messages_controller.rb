@@ -1,6 +1,7 @@
 class MessagesController < ApplicationController
   def index
     @messages = Message.all
+
   end
   def show
     @message = Message.find(params[:id])
@@ -24,7 +25,8 @@ class MessagesController < ApplicationController
     end
    end
   def create
-    @message = Message.new(message_params)
+
+    @message = current_user.messages.build(message_params)
     if @message.save
       redirect_to '/'
     else

@@ -11,7 +11,6 @@
 <p> Zalogowany jako: <%= User.find(session[:user_id]).nick %>
  |
  <%= link_to "Pokaż profil", User.find(session[:user_id]), class: 'link' %> |
- Pokaż posty |
  <%= link_to "Logout", logout_path, method: "delete", class: 'link' %></p>
 <% else %>
  <%= link_to "Zaloguj się", '/sessions/new', class: 'link' %>

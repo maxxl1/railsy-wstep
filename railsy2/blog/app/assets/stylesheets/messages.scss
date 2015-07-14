@@ -13,7 +13,6 @@ body {
 
 .header {
   background-color:  #B2E0FF;
-  box-shadow: 0px 2px 5px rgba(0,0,0,0.15);
   height: 80px; 
   text-align: center;
 }
@@ -32,8 +31,23 @@ body {
   margin: 0 auto;
 }
 
+.container_panel {
+  background-color: #fff;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  font-weight: 300;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.15);
+}
+
 .messages, .create {
   margin: 40px 0;
+}
+
+.reg {
+  margin-top: 200px;
+  margin-left: 8%;
+  width: 100%
 }
 
 .messages a,
@@ -112,4 +126,10 @@ form textarea:focus {
     .messages, .create {
       padding: 0 20px;
     }
+}
+
+.link{
+
+    color: black;
+    text-decoration: none;
 }
