@@ -1,0 +1,16 @@
+.header
+  .container
+    %a{:href => "/"}
+      = image_tag "logo.png"
+.reg
+  .container
+    = form_for(:session, url: login_path) do |f|
+      .reg
+        = f.label :nick
+        = f.text_field :nick
+        = f.label :password
+        = f.password_field :password
+        .actions
+          = f.submit "Zaloguj"
+          %p
+            Nie masz konta? zarejestruj się tutaj: #{link_to "Rejestracja", '/users/new', class: 'link'}

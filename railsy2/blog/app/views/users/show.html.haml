@@ -1,0 +1,40 @@
+.header
+  .container
+    %a{:href => "/"}
+      = image_tag "logo.png"
+.container_panel
+  .panel
+    - if logged_in?
+      %p
+        Zalogowany jako: #{User.find(session[:user_id]).nick}
+        |
+        \#{link_to "Pokaż profil", User.find(session[:user_id]), class: 'link'} |
+        \#{link_to "Logout", logout_path, method: "delete", class: 'link'}
+    - else
+      = link_to "Zaloguj się", '/sessions/new', class: 'link'
+.messages
+  .container
+    .message
+      %p
+        %b
+          Profil użytkownika #{@user.nick}
+      %br/
+      %p.content
+        E-mail: #{@user.email}
+      %p.content
+        Data rejestracji: #{@user.created_at.day}/#{@user.created_at.month}/#{@user.created_at.year}
+    %br/
+    %p Ostatnie posty:
+    - @posty.reverse_order.take(5).each do |message|
+      .message
+        %p.content= message.content
+        %p.time
+          = message.created_at
+          by #{User.find(message.user_id).nick}
+        - if message.user_id == session[:user_id]
+          = link_to 'Usuń post', message, method: :delete, data: { confirm: "Na pewno?"}
+        = link_to 'Wyświetl całośc', message
+        - if message.user_id == session[:user_id]
+          = link_to 'Edytuj', edit_message_path(message)
+    - if logged_in?
+      = link_to 'Nowy post', "messages/new"
