@@ -1,13 +1,11 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
 
 resources :messages
 resources :users
+resources :sessions
 get '/' => 'messages#index'
 get '/messages/new' => 'messages#new'
 post 'messages' => 'messages#create'
-get    'login'   => 'sessions#new'
-post   'login'   => 'sessions#create'
 delete 'logout'  => 'sessions#destroy'
 
 

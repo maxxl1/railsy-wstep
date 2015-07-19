@@ -1,17 +1,3 @@
-.header
-  .container
-    %a{:href => "/"}
-      = image_tag "logo.png"
-.container_panel
-  .panel
-    - if logged_in?
-      %p
-        Zalogowany jako: #{User.find(session[:user_id]).nick}
-        |
-        \#{link_to "Pokaż profil", User.find(session[:user_id]), class: 'link'} |
-        \#{link_to "Logout", logout_path, method: "delete", class: 'link'}
-    - else
-      = link_to "Zaloguj się", '/sessions/new', class: 'link'
 .messages
   .container
     .message
@@ -19,4 +5,4 @@
       %p.time
         = @message.created_at
         by #{User.find(@message.user_id).nick}
-      = link_to 'Powrot', '/'
+      = link_to 'Powrót', '/'
