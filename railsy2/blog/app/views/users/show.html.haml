@@ -19,8 +19,5 @@
           by #{User.find(message.user_id).nick}
         - if message.user_id == session[:user_id]
           = link_to 'Usuń post', message, method: :delete, data: { confirm: "Na pewno?"}
-        = link_to 'Wyświetl całośc', message
         - if message.user_id == session[:user_id]
           = link_to 'Edytuj', edit_message_path(message)
-    - if logged_in?
-      = link_to 'Nowy post', "messages/new"
