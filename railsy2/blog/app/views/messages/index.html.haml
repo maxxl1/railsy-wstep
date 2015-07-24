@@ -6,6 +6,7 @@
         %p.time
           = message.created_at
           by #{User.find(message.user_id).nick}
+          komentarze: #{Comment.where(:message_id => message.id).count}
         - if message.user_id == session[:user_id]
           = link_to 'Usuń post', message, method: :delete, data: { confirm: "Na pewno?"}
         = link_to 'Wyświetl całośc', message

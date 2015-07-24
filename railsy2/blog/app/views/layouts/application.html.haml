@@ -8,8 +8,7 @@
   %body
     .header
       .container
-        %a{:href => "/"}
-          = image_tag "logo.png"
+        = link_to image_tag("logo.png"), "/"
     .container_panel
       .panel
         - if logged_in?         

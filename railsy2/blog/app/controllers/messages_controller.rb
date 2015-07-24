@@ -5,6 +5,15 @@ class MessagesController < ApplicationController
   end
   def show
     @message = Message.find(params[:id])
+    @comments = @message.comments.order('created_at desc')
+  end
+  def comment
+   @comment = Comment.new
+   @comment.comment = params[:comment][:comment]
+   @comment.message_id = params[:id]
+   @comment.user_id = current_user.id
+   @comment.save
+   redirect_to Message.find(params[:id])
   end
   def destroy
     Message.find(params[:id]).destroy

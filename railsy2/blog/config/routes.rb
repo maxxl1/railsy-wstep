@@ -3,10 +3,12 @@ Rails.application.routes.draw do
 resources :messages
 resources :users
 resources :sessions
+
 get '/' => 'messages#index'
 get '/messages/new' => 'messages#new'
 post 'messages' => 'messages#create'
 delete 'logout'  => 'sessions#destroy'
+post 'comment' => 'messages#comment'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
