@@ -4,7 +4,8 @@
       %p.content= @message.content
       %p.time
         = @message.created_at
-        by #{User.find(@message.user_id).nick}
+        by
+        = link_to User.find(@message.user_id).nick, User.find(@message.user_id)
       = link_to 'Powrót', '/'
       %br
       %br

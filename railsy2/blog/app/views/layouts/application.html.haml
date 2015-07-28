@@ -17,6 +17,7 @@
           = link_to "Pokaż profil", User.find(session[:user_id]), class: 'link' 
           |
           = link_to "Skrzynka odbiorcza", '/privs', class: 'link'
+          (#{Priv.where(:recipent_id => session[:user_id], :read => "f").count})
           |
           = link_to "Wyloguj się", logout_path, method: "delete", class: 'link'
         - else

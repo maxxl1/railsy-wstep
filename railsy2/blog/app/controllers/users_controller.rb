@@ -13,6 +13,7 @@ class UsersController < ApplicationController
     @priv.sender_id = current_user.id
     @priv.recipent_id = params[:id]
     @priv.content = params[:content][:content]
+    @priv.read = 0
     if @priv.save
       redirect_to '/'
     else
