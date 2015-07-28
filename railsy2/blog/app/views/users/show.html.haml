@@ -9,6 +9,8 @@
         E-mail: #{@user.email}
       %p.content
         Data rejestracji: #{@user.created_at.day}/#{@user.created_at.month}/#{@user.created_at.year}
+    - if logged_in? && @user.id != session[:user_id]
+      = link_to 'Wyślij wiadomość', :controller => :users, :action => :priv
     %br/
     %p Ostatnie posty:
     - @posty.reverse_order.take(5).each do |message|

@@ -1,0 +1,6 @@
+.create
+  .container
+    = form_tag(controller: "users", action: "new_priv", method: "post") do
+      = text_area_tag "content[content]"
+      %br/
+      = submit_tag "Wyślij", :class => "submit"

@@ -1,0 +1,12 @@
+.messages
+  .container
+    - if @privy.count != 0
+      - @privy.each do |priv|
+        .message
+          %p.content= priv.content
+          %p.time
+            = priv.created_at
+            by #{User.find(priv.sender_id).nick}
+            = link_to 'Usuń', priv, method: :delete
+    - else
+      Brak wiadomości

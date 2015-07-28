@@ -15,14 +15,16 @@
         %p.content= comment.comment
         %p.time
           = comment.created_at
-          by #{User.find(comment.user_id).nick}
+          by
+          = link_to User.find(comment.user_id).nick, User.find(comment.user_id)
       - if logged_in? 
         .comment
           = form_tag(controller: "messages", action: "comment", method: "post") do
             = hidden_field_tag "id", @message.id
             = text_area_tag "comment[comment]"
             %br/
-            = submit_tag "Wyślij komentarz"
+            = submit_tag "Wyślij komentarz", :class => "submit"
       - else
         %br
-        %p.content Zaloguj się aby dodać komentarz
+        %p.content 
+          = link_to  'Zaloguj się aby dodać komentarz', '/sessions/new'

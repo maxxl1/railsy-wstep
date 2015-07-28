@@ -3,13 +3,15 @@ Rails.application.routes.draw do
 resources :messages
 resources :users
 resources :sessions
-
+get '/users/:id/priv(.:format)' => 'users#priv'
+post '/users/:id/priv(.:format)' => 'users#new_priv'
+resources :privs
 get '/' => 'messages#index'
+get '/privs/new' => 'privs#new'
 get '/messages/new' => 'messages#new'
 post 'messages' => 'messages#create'
 delete 'logout'  => 'sessions#destroy'
 post 'comment' => 'messages#comment'
-
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

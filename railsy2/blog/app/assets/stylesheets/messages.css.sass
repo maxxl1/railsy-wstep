@@ -48,6 +48,9 @@ html
   display: inline-block
   font-weight: 400
 
+.by a, .create .actions input
+
+
 .message
   background-color: #fff
   font-weight: 300
@@ -56,14 +59,24 @@ html
   width: 45%
 
 
-p.time
+p.time, p.time a
+  padding: 0px
+  background-color: #fff
   color: #0084d7
   font-size: 12px
-  margin-top: 12px
+  margin-top: 0px
 
 p.content
   font-size: 16px
+  background-color: #fff
+  color: black
 
+p.content a
+  font-size: 16px
+  background-color: #fff
+  color: black
+  padding: 0px
+  margin: 0
 
 button
   background-color: #B2E0FF
@@ -112,3 +125,16 @@ form
 .comment
   textarea
     width: 100%
+
+.submit
+  background-color: #0099FF
+  border: none
+  color: #fff
+  cursor: pointer
+  font-size: 14px
+  margin-top: 10px
+  padding: 6px 12px
+  transition: background-color 0.5s
+  text-decoration: none
+  display: inline-block
+  font-weight: 400
